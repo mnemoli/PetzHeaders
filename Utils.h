@@ -85,7 +85,30 @@ enum __declspec(dllimport) WordConceptIndex;
 
 enum __declspec(dllimport) PetBiorhythm;
 
-enum __declspec(dllimport) BehaviorTrait;
+enum __declspec(dllimport) BehaviorTrait {
+	Liveliness,
+	Playfulness,
+	Independence,
+	Confidence,
+	Naughtiness,
+	Acrobaticness,
+	Patience,
+	Kindness,
+	Nurturing,
+	Finickiness,
+	Intelligence,
+	Messiness,
+	Quirkiness,
+	Insanity,
+	Constitution,
+	Metabolism,
+	Dogginess,
+	LoveDestiny,
+	Fertility,
+	LoveLoyalty,
+	Libido,
+	OffspringSex
+};
 
 enum __declspec(dllimport) EChrz;
 
@@ -117,7 +140,15 @@ enum __declspec(dllimport) GestureType;
 
 enum __declspec(dllimport) UNeutral;
 
-enum __declspec(dllimport) TraitLevel;
+enum __declspec(dllimport) TraitLevel {
+	Zero,
+	Low,
+	Medium,
+	High,
+	Fifty,
+	Hundred,
+	Random
+};
 
 enum __declspec(dllimport) PetReaction;
 
