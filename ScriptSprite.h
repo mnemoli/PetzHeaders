@@ -1,0 +1,55 @@
+#pragma once
+#include "XSprite.h"
+class __declspec(dllimport) ScriptSprite : public XSprite {
+public:
+	unsigned int vars[3225];
+	virtual ScriptSprite* Clone(bool a) const;
+	virtual void RestoreFromClone(XSprite const* other);
+	virtual void ResetStack(ResetType a, int b);
+	virtual void ResetParams();
+	virtual void InvalidateBallState();
+	virtual void PushScriptElements(long a, ...);
+	virtual int GetLayeredFramesRemaining(int a) const;
+	virtual int GetNumFramesRemainingInCurAction() const;
+	virtual void GetFirstAndLastFrames(int* first, int* last) const;
+	virtual void StopWaitingForOtherPet(ScriptSprite* other);
+	virtual void PushScript(long const* a, int b, Stack* c);
+	virtual int GetNumDialogElements(long a);
+	virtual int PushStoredAction(long a, int b, bool c);
+	virtual void ResetAllLayeredActions();
+	virtual void ResetLayeredAction(int a);
+	virtual void PushLayeredAction(long a, int b, int c, int d, int e);
+	virtual void SupressNextAutoTransition();
+	virtual void SetTargetLocation(XTPoint<int>* xtpoint);
+	virtual void SetHeadTarget(XTPoint<int>* xtpoint, int something);
+	virtual void SetEyesTarget(XTPoint<int>* xtpoint);
+	virtual void MakeFocusRect(XTRect<int, long>* rect, XTPoint<int>* point, int a, int b, int c);
+	virtual void MakeFocusRectBall(XTRect<int, long>* rect, int a, int b, int c, int d);
+	virtual void SetHeft(int heft);
+	virtual void SetTargetSprite(XSprite* xsprite);
+	virtual void SetHeadTracking(bool flag, XSprite* xsprite, HeadTrackMode headTrackMode, int something, bool flag2);
+	virtual void SetEyesTracking(XSprite* xsprite);
+	virtual void DoLocationClipping(XTRect<int, long>* xtrect);
+	virtual int MapFromUBall(UBall uball);
+	virtual bool GetIfPawIsInAir(EBFF ebff);
+	virtual void CheckForFootstepCues(unsigned long cues);
+	virtual XTPoint<int> SetBallPoint(int something, XTPoint<int> point);
+	virtual XTPoint<int> GetBallPoint(int);
+	virtual ScriptSprite* SetControlSprite(ScriptSprite* sprite, EShiftMode mode, EStackMode stackMode, int something, int something2);
+	virtual ScriptSprite* GetControlSprite() const;
+	virtual ScriptSprite* EndControlSprite();
+	virtual void UpdateShiftSprite();
+	virtual void Shift(XTPoint<int> point);
+	virtual void SetXYZRotation(int x, int y, int z, bool flag);
+	virtual void GetXYZRotation(int* x, int* y, int* z) const;
+	virtual XSprite* GetSpritePtrFromGenericType(EScriptSpriteToken token) const;
+	virtual long HandleCallbacks(CallbackType callbackType, long something);
+	virtual void AdvanceToNextBallState(bool something);
+	virtual void UpdateFudgers();
+	virtual void UpdateSwing();
+	virtual void PopStackList();
+	virtual void PushStackList();
+	virtual bool GetHasRemoveDownloadActionReqest();
+	virtual void SetClean() override;
+	virtual ~ScriptSprite();
+};
