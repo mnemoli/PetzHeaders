@@ -152,7 +152,11 @@ enum __declspec(dllimport) BehaviorTrait {
 	OffspringSex
 };
 
-enum __declspec(dllimport) EChrz;
+enum __declspec(dllimport) EChrz {
+	None = -1,
+	Cat = 0,
+	Dog
+};
 
 enum __declspec(dllimport) FacingDirection;
 
