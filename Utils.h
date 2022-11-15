@@ -10,11 +10,15 @@ enum class __declspec(dllimport) ELoadType;
 
 struct __declspec(dllimport) Banner;
 
-template <class T, class X>
-class __declspec(dllimport) pfvector {
-	void* ptr;
+template <class T, class X = char const*>
+class pfvector {
+private:
+	T* ptr;
 	unsigned int size;
 	unsigned int capacity;
+public:
+	inline T& operator[](int a) { return ptr[a]; };
+	~pfvector() { delete[] ptr; };
 };
 
 class __declspec(dllimport)Filmstrip;
@@ -65,7 +69,45 @@ enum __declspec(dllimport) E3DToyAttach;
 
 enum __declspec(dllimport) EType;
 
-enum __declspec(dllimport) EAdj;
+enum __declspec(dllimport) EAdj {
+	Type,
+	Chrz,
+	Toyz,
+	Prop,
+	Part,
+	ThreeD,
+	Color,
+	Flavor,
+	Size,
+	Mass,
+	Friction,
+	Tasty,
+	Edible,
+	Fatty,
+	Liquid,
+	Drug,
+	Medicine,
+	Aphrodisiac,
+	Discipline,
+	Chew,
+	Tug,
+	Density,
+	Thickness,
+	Soft,
+	Fuzzy,
+	Round,
+	Bounce,
+	Swatty,
+	Pretty,
+	Vain,
+	Paint,
+	Groom,
+	BadNoisy,
+	NiceNoisy,
+	Flies,
+	Rideable,
+	Mouselike
+};
 
 enum __declspec(dllimport) EDrop;
 
@@ -167,7 +209,6 @@ class __declspec(dllimport) XBrain;
 
 class __declspec(dllimport) LnzInfo;
 class __declspec(dllimport) XPhenotype;
-class __declspec(dllimport) Genome;
 class __declspec(dllimport) Match;
 
 enum __declspec(dllimport) LookMode;
@@ -179,3 +220,45 @@ enum __declspec(dllimport) ScriptDialogState;
 struct __declspec(dllimport) TrickMemoryType;
 
 class __declspec(dllimport) Personality;
+
+namespace Petz {
+	enum Flavors {
+		Chicken,
+		Beef,
+		Fish,
+		Turkey,
+		Milk,
+		Sweets,
+		Catnip,
+		Cheese,
+		Plastic,
+		Rubber,
+		Soft,
+		Bone,
+		Wood,
+		Metal,
+		Water,
+		ShellsRocks,
+		HairballFleaspray = 17,
+		Chemicals = 23,
+		Garbage,
+		Fleabottle = 26,
+		Plants,
+		HealthyTreat
+	};
+
+	enum Colors {
+		White,
+		Black,
+		Red,
+		Green,
+		Yellow,
+		Blue,
+		Purple,
+		Pink,
+		Orange,
+		Brown,
+		Grey,
+		Clear
+	};
+}

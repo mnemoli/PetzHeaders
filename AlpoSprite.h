@@ -3,8 +3,8 @@
 #include "Host.h"
 #include "BannerAble.h"
 class __declspec(dllimport) AlpoSprite : public ScriptSprite, public Host, public BannerAble {
-	unsigned int vars[389];
 public:
+	unsigned int vars[389];
 	virtual ~AlpoSprite();
 	void DoInitDownload(LoadInfo const&, XLibraryList*) override;
 	virtual bool GetIsDependent(void) const;

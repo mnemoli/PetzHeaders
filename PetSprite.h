@@ -1,6 +1,7 @@
 #pragma once
 #include "CharacterSprite.h"
 #include "StateMachine.h"
+#include "Genetics.h"
 class __declspec(dllimport) PetSprite : public CharacterSprite, public StateMachine {
 public:
 	unsigned int vars[944];
@@ -300,7 +301,7 @@ public:
 	virtual int MapBreedSpecificAction(UAction) = 0;
 	virtual bool IsThisADogLieDownNeutral(int);
 	virtual void PetGetsTiredAndHungry(int, int);
-	virtual AlpoSprite* FindSleepToy(pfvector<AlpoSprite*, char const*> const&);
+	virtual AlpoSprite* FindSleepToy(pfvector<AlpoSprite*> const&);
 	virtual bool CanISoundAdult(void) const;
 	virtual void LoadPetBiorhythms(void);
 	virtual void LoadLinezFileStuff(char const*);
@@ -333,8 +334,8 @@ public:
 	virtual AlpoSprite* GetCloseToy(AlpoSprite*);
 	virtual XTSmartPtr<Ledge*> GetLedgeNearby(void);
 	virtual void HandleLedgeHasMoved(Ledge const&);
-	virtual int RemoveSpritesWeDontKnowAbout(pfvector<XTSmartPtr<AlpoSprite*>, char const*>&);
-	virtual int RemoveRootedSprites(pfvector<XTSmartPtr<AlpoSprite*>, char const*>&);
+	virtual int RemoveSpritesWeDontKnowAbout(pfvector<XTSmartPtr<AlpoSprite*>>&);
+	virtual int RemoveRootedSprites(pfvector<XTSmartPtr<AlpoSprite*>>&);
 	virtual bool GetOkToBeGrabbed(void);
 	virtual void EZSetGeneGoalTrait(Genome&, BehaviorTrait, TraitLevel);
 	virtual void EZSetGeneSpriteTrait(Genome&, EAdj, TraitLevel);
@@ -346,7 +347,7 @@ public:
 	virtual void DispatchEmotions(EmotionToken&) override;
 	virtual void DispatchGoals(int, GoalToken&) override;
 	virtual void DispatchPlans(PlanToken&) override;
-	virtual pfvector<XBrain, char const*>& GetBiorhythms(void) override;
+	virtual pfvector<XBrain>& GetBiorhythms(void) override;
 	virtual bool GetIsPetz() const override;
 	virtual bool GetShouldIDoHorizon() const override;
 	virtual bool GetMustIDoHorizon() const override;

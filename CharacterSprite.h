@@ -9,7 +9,7 @@ public:
 	virtual void FilterGoal(int, int*, AlpoSprite*, AlpoSprite*);
 	virtual int GetOverallEmotionValue(int) const;
 	virtual Personality* GetPersonality(void) const;
-	virtual pfvector<XBrain, char const*>& GetBiorhythms(void);
+	virtual pfvector<XBrain>& GetBiorhythms(void);
 	virtual void DispatchGoals(int, GoalToken&);
 	virtual void DispatchPlans(PlanToken&);
 	virtual void DispatchEmotions(EmotionToken&);
@@ -46,7 +46,7 @@ public:
 	virtual void GetGoalInfo5(AlpoSprite*, int*, int*, AlpoSprite**, AlpoSprite**) const;
 	virtual int PtToPtAngle(XTPoint<int>*, XTPoint<int>*) const;
 	virtual AlpoSprite* MyGet1AlpoByAdj(bool, AlpoSprite*, ...) const;
-	virtual int GetAllToys(bool, AlpoSprite*, pfvector<XTSmartPtr<AlpoSprite*>, char const*>&, bool, bool);
+	virtual int GetAllToys(bool, AlpoSprite*, pfvector<XTSmartPtr<AlpoSprite*>>&, bool, bool);
 	virtual ScriptDialogState GetScriptDialogState(void) const;
 	virtual bool IsSafeToAttachSprite(AlpoSprite*, int, int) const;
 	virtual bool IsPositionSafeToAttachSprite(AlpoSprite*, int, int) const;
@@ -85,7 +85,7 @@ public:
 	virtual int GetTraitValue2(CharacterSprite const*, BehaviorTrait);
 	virtual void IncrementTraitValue3(CharacterSprite const*, BehaviorTrait, int);
 	virtual void DecrementTraitValue3(CharacterSprite const*, BehaviorTrait, int);
-	virtual bool GetOtherPetSprites(pfvector<XTSmartPtr<CharacterSprite*>, char const*>&, EChrz) const;
+	virtual bool GetOtherPetSprites(pfvector<XTSmartPtr<CharacterSprite*>>&, EChrz) const;
 	virtual bool GetOtherSuitablePet(XTSmartPtr<CharacterSprite*>&, EChrz) const;
 	virtual LookMode GetFreeToAutoLook(void) const;
 	virtual bool GetFreeToAutoMood(void) const;
