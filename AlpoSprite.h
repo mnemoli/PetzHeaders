@@ -2,10 +2,15 @@
 #include "ScriptSprite.h"
 #include "Host.h"
 #include "BannerAble.h"
+#include "Ledge.h"
+
+class PetSprite;
+
 class __declspec(dllimport) AlpoSprite : public ScriptSprite, public Host, public BannerAble {
 public:
 	unsigned int vars[389];
 	virtual ~AlpoSprite();
+	const Ledge* SetLedge(Ledge*);
 	void DoInitDownload(LoadInfo const&, XLibraryList*) override;
 	virtual bool GetIsDependent(void) const;
 	virtual bool GetIsBehindPetDoor(void) const;

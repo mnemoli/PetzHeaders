@@ -1,4 +1,5 @@
 #pragma once
+
 class __declspec(dllimport) LoadInfo {
 public:
 	unsigned int vars[205];
@@ -10,6 +11,10 @@ enum class __declspec(dllimport) ELoadType;
 
 struct __declspec(dllimport) Banner;
 
+// pfvector is not equivalent to std::vector
+// as it stores size/capacity rather than start/end ptrs
+// sizeof is 12 rather than 24
+// this version is super basic and can't do anything other than access
 template <class T, class X = char const*>
 class pfvector {
 private:
@@ -28,8 +33,13 @@ struct __declspec(dllimport) SOldDLLEntry;
 __declspec(dllimport) void* PetzNew(UINT32 amt);
 __declspec(dllimport) void PetzDelete(void* ptr);
 
-template<class T, class X>
-struct XTRect;
+template<class T = int, class X = long>
+struct XTRect {
+	T x1;
+	T y1;
+	X x2;
+	X y2;
+};
 
 template<class T>
 struct XTPoint;
@@ -116,10 +126,6 @@ enum __declspec(dllimport) ERunMode;
 enum __declspec(dllimport) CursorType;
 
 enum __declspec(dllimport) ECleanUpOrder;
-
-class __declspec(dllimport) PetSprite;
-
-class __declspec(dllimport) Ledge;
 
 class __declspec(dllimport) DxSHandle;
 
@@ -213,7 +219,7 @@ class __declspec(dllimport) XBrain;
 
 class __declspec(dllimport) LnzInfo;
 class __declspec(dllimport) XPhenotype;
-class __declspec(dllimport) Match;
+class __declspec(dllimport) Match; // is an xsmartobject
 
 enum __declspec(dllimport) LookMode;
 enum __declspec(dllimport) BasketPeekType;
@@ -266,3 +272,14 @@ namespace Petz {
 		Clear
 	};
 }
+
+class Sprite_Hole;
+class Sprite_Dirt;
+template <class T>
+class pfvector_safe;
+enum ESurfaceAdj;
+class AreaLocationData;
+enum EShlMode;
+enum EFoot;
+class Sprite_Lair;
+enum EAreaAdj;
