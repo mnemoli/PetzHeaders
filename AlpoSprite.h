@@ -144,4 +144,5 @@ public:
 	virtual void AddAlpoExtraCode(AlpoSprite&) override;
 	virtual void RemAlpoExtraCode(AlpoSprite&) override;
 	virtual void RunAlways() override;
+	virtual XTPoint<int> GetHoldPoint(void) const override;
 };
