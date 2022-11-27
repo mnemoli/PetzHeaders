@@ -42,7 +42,10 @@ struct XTRect {
 };
 
 template<class T>
-struct XTPoint;
+struct XTPoint {
+	T x;
+	T y;
+};
 
 template<class T>
 class XTSmartPtr;
@@ -278,6 +281,7 @@ class Sprite_Dirt;
 template <class T>
 class pfvector_safe;
 enum ESurfaceAdj;
+enum ESurface;
 class AreaLocationData;
 enum EShlMode;
 enum EFoot;

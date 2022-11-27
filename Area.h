@@ -20,6 +20,7 @@ public:
 	virtual void SeeAdjRegion(void);
 	virtual void SeeAllLedges(void);
 	virtual void SeeAllSurfaces(void);
+	virtual ESurface GetSurfaceAt(XTPoint<int> const&);
 	virtual ESurfaceAdj GetSurfaceAdjAt(XTPoint<int> const&) const;
 	virtual int GetHorizonAt(XTPoint<int> const&);
 	virtual int GetLowestHorizonAt(int, int);
