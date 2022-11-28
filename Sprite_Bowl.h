@@ -2,9 +2,10 @@
 #include "ToySprite.h"
 
 class __declspec(dllimport) Sprite_Bowl : public ToySprite {
-private:
-	int vars[8];
+protected:
+	int foodAmount;
 public:
+	int vars[7];
 	Sprite_Bowl();
 	virtual void AddInHostExtraCode(Host&) override;
 	virtual void Draw(XTRect<int, long>*, XTRect<int, long>*, XDrawPort*, EStackDraw) override;

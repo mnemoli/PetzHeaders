@@ -130,7 +130,11 @@ enum __declspec(dllimport) CursorType;
 
 enum __declspec(dllimport) ECleanUpOrder;
 
-class __declspec(dllimport) DxSHandle;
+class __declspec(dllimport) DxSHandle {
+private:
+	DxSHandle();
+	int vars[5];
+};
 
 enum __declspec(dllimport) WordConceptIndex;
 

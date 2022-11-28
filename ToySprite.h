@@ -2,7 +2,6 @@
 #include "AlpoSprite.h"
 
 class __declspec(dllimport) ToySprite : public AlpoSprite {
-	//unsigned int vars[120];
 public:
 	virtual void InitToy(bool, Host*);
 	virtual bool GetDontBringToScreenSaver(void) const;
