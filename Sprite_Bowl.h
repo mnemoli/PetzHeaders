@@ -24,6 +24,4 @@ public:
 	virtual bool GetMedicated();
 	virtual void SetMedicated(bool);
 	virtual ~Sprite_Bowl();
-
-
 };

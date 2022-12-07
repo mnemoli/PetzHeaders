@@ -3,6 +3,8 @@
 class __declspec(dllimport) ScriptSprite : public XSprite {
 public:
 	unsigned int vars[3225];
+	virtual void Draw(XTRect<int, long>*, XTRect<int, long>*, XDrawPort*, EStackDraw);
+	virtual void DebugDump();
 	virtual ScriptSprite* Clone(bool a) const;
 	virtual void RestoreFromClone(XSprite const* other);
 	virtual void ResetStack(ResetType a, int b);

@@ -1,4 +1,5 @@
 #pragma once
+#include "XDLink.h"
 
 class __declspec(dllimport) LoadInfo {
 public:
@@ -23,7 +24,14 @@ private:
 	unsigned int capacity;
 public:
 	inline T& operator[](int a) { return ptr[a]; };
+	inline T& operator[](int a) const { return ptr[a]; };
 	~pfvector() { delete[] ptr; };
+};
+
+template <class T, int I>
+class pfarray {
+private:
+	T ar[I];
 };
 
 class __declspec(dllimport)Filmstrip;
@@ -47,12 +55,79 @@ struct XTPoint {
 	T y;
 };
 
+#pragma pack(1)
+class __declspec(dllimport) XPointRot3_16 {
+public:
+	short x;
+	short y;
+	short z;
+	BYTE rotz;
+	BYTE rotx;
+	BYTE roty;
+	BYTE pad;
+};
+#pragma pack(4)
+
+// dangerous empty implementations
 template<class T>
-class XTSmartPtr;
+class __declspec(dllimport) XTSmartPtr : public XDLink {
+};
 
 class __declspec(dllimport) XRegion;
 
-class __declspec(dllimport) XDrawPort;
+class __declspec(dllimport) XAbstractDraw {
+public:
+	virtual ~XAbstractDraw();
+	virtual unsigned char* GetBits() = 0;
+	virtual void CloseBits() = 0;
+	virtual XTRect<> GetBounds() const = 0;
+	virtual int GetRowBytes() const = 0;
+	virtual XTPoint<int> GetOrigin() const;
+	virtual void XFillRect(XTRect<> const&, int);
+};
+
+enum __declspec(dllimport) BrushType;
+
+enum RenderMode;
+
+class __declspec(dllimport) RenderBlock {
+public:
+	RenderMode rendermode;
+	int colorindex;
+	int outlinecolor;
+	int fuzz;
+	int textureinfo1;
+	int tex2;
+	int tex3;
+	RenderBlock(RenderMode);
+};
+
+class  CircleRenderBlock : public RenderBlock {
+public:
+	int outlinetype;
+	XTRect<> rect;
+	int vars[4];
+	__declspec(dllimport) CircleRenderBlock& operator=(CircleRenderBlock const&);
+	CircleRenderBlock(RenderMode rm) : RenderBlock(rm), vars{ 0 } { };
+};
+
+class __declspec(dllimport) XDrawPort: public XAbstractDraw {
+public:
+	int vars[42];
+	virtual unsigned char* GetBits() override;
+	virtual void CloseBits() override;
+	virtual XTRect<> GetBounds() const override;
+	virtual int GetRowBytes() const override;
+	virtual XTPoint<int> GetOrigin() const override;
+	virtual void XFillRect(XTRect<> const&, int) override;
+	virtual void SetOrigin(XTPoint<int>);
+	virtual void SetOrigin(int, int);
+	virtual unsigned char* GetHiColorBits();
+	void XInitPort(XTRect<> const*, int, bool, bool, bool);
+	void XCopyBits(XDrawPort*, XTRect<> const*, XTRect<> const*, BrushType);
+	bool XFillCircleEx(CircleRenderBlock*);
+	virtual ~XDrawPort() override;
+};
 
 enum __declspec(dllimport) EStackDraw;
 
@@ -291,3 +366,12 @@ enum EShlMode;
 enum EFoot;
 class Sprite_Lair;
 enum EAreaAdj;
+
+class __declspec(dllimport) CShlGlobals {
+public:
+	CShlGlobals();
+	~CShlGlobals();
+	bool vars[1768];
+};
+
+__declspec(dllimport) extern CShlGlobals* g_ShlGlobals;

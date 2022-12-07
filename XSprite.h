@@ -33,6 +33,4 @@ public:
 	virtual bool GetShouldIBeDeleted() const;
 	virtual bool SetShouldIBeDeleted(bool);
 	virtual void DrawStacked(XDrawPort* drawPort, EStackDraw stackDrawType);
-	virtual void Draw(XTRect<int, long>*, XTRect<int, long>*, XDrawPort*, EStackDraw);
-	virtual void DebugDump();
 };
