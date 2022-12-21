@@ -10,7 +10,7 @@ public:
 	short y1;
 	int vars1[80];
 	short ballsize[512];
-	pfvector<XPointRot3_16> rotinfo;
+	pfvector<XPointRot3_16> posrotinfo;
 };
 class XBallzDataBase;
 
@@ -60,4 +60,8 @@ public:
 	BallFrameEx const* GetCartesianCoordinates(BallState*);
 	void ZOrder(BallFrameEx const*, int);
 	void Clip(BallState&, XTRect<int, long> const&, XDrawPort&, XDrawPort&) const;
+	void SetIndivBallColor(int ballno, int color);
+	void SetGroupBallColor(int ballno, int color);
+	void SetGroupColor(int group, int color);
+	void RotateBallPoint(XTVector3<long, long>&, BallState const&, int, XPointRot3_16 const&) const;
 };

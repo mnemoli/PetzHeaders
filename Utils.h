@@ -49,8 +49,15 @@ struct XTRect {
 	X y2;
 };
 
+template<class T = int, class X = long>
+struct XTSize {
+	T rows;
+	X cols;
+};
+
 template<class T>
 struct XTPoint {
+public:
 	T x;
 	T y;
 };
@@ -67,6 +74,18 @@ public:
 	BYTE pad;
 };
 #pragma pack(4)
+
+template<class T, class X>
+class XTVector3 {
+public:
+	T x;
+	T y;
+	T z;
+	/*XTVector3 operator+(const XTVector3& other) const { return XTVector3{ this.x + other.x, this.y + other.y, this.z + other.z }; };
+	XTVector3 operator-(const XTVector3& other) const {
+		return XTVector3{ this.x - other.x, this.y - other.y, this.z - other.z };
+	};*/
+};
 
 // dangerous empty implementations
 template<class T>
@@ -96,7 +115,7 @@ public:
 	int colorindex;
 	int outlinecolor;
 	int fuzz;
-	int textureinfo1;
+	int textureinfo1 = 0;
 	int tex2;
 	int tex3;
 	RenderBlock(RenderMode);
@@ -106,9 +125,12 @@ class  CircleRenderBlock : public RenderBlock {
 public:
 	int outlinetype;
 	XTRect<> rect;
-	int vars[4];
+	int clipcircleangle = 0;
+	int eyelidangle = 0;
+	int eyelidheight = 0 ;
+	const CircleRenderBlock* clipwithin = 0;
 	__declspec(dllimport) CircleRenderBlock& operator=(CircleRenderBlock const&);
-	CircleRenderBlock(RenderMode rm) : RenderBlock(rm), vars{ 0 } { };
+	CircleRenderBlock(RenderMode rm) : RenderBlock(rm) { };
 };
 
 class __declspec(dllimport) XDrawPort: public XAbstractDraw {
@@ -126,6 +148,7 @@ public:
 	void XInitPort(XTRect<> const*, int, bool, bool, bool);
 	void XCopyBits(XDrawPort*, XTRect<> const*, XTRect<> const*, BrushType);
 	bool XFillCircleEx(CircleRenderBlock*);
+	XTSize<int, long> GetSize();
 	virtual ~XDrawPort() override;
 };
 

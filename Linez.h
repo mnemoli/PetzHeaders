@@ -75,10 +75,10 @@ public:
 	LineStruct linezinfo[512];
 	LineStruct linezinfo2[512];
 	int colorindexarray[512];
-	int idk[512];
+	int ballcolorarray[512];
 	int outlinecolorarray[512];
 	int outlinearray[512];
-	int anotherarray[512];
+	int ballgrouparray[512];
 	int crud4[1612];
 	int thinarray[512];
 	int fatarray[512];
