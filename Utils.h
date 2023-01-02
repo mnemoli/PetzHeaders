@@ -125,7 +125,7 @@ class  CircleRenderBlock : public RenderBlock {
 public:
 	int outlinetype;
 	XTRect<> rect;
-	int clipcircleangle = 0;
+	int notexturerotate = 0;
 	int eyelidangle = 0;
 	int eyelidheight = 0 ;
 	const CircleRenderBlock* clipwithin = 0;
